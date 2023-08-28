@@ -1,0 +1,122 @@
+/* Logo-6 */
+nav {
+  height: 40px;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.bg-light-black {
+  background-color: #1e0b0b;
+  color: #fff;
+  font-weight: 100;
+}
+
+.bg-light-green {
+  background-color: #009270;
+  color: #fff;
+  font-weight: 100;
+}
+
+.bg-light-grey {
+  background-color: #f7f7f7;
+  color: #fff;
+  font-weight: 100;
+}
+
+.logo-6 h6 {
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.logo-6 h6 .span1 {
+  background: #e74c3c;
+  color: #000000;
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 6px;
+}
+
+.logo-6 h6 span {
+  background: #fff;
+  color: #009270;
+  display: inline-block;
+  line-height: 1.5;
+  padding: 0 8px;
+  margin-right: 2px;
+  border-radius: 6px;
+}
+
+.d-mobile {
+  display: none !important;
+}
+
+.d-desktop {
+  display: block !important;
+}
+
+.m-pading {
+}
+
+@media screen and (max-width: 1000px) {
+  .d-mobile {
+    display: block !important;
+  }
+
+  .d-desktop {
+    display: none !important;
+  }
+
+  .m-pading {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.nav-bottom-item {
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 45px;
+}
+
+.nav-bottom-item:hover {
+  color: #333;
+}
+
+.nav-bottom-item a {
+  text-decoration: none;
+  color: #030303b8;
+  font-weight: 300;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  margin-top: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-bottom-item a i {
+  font-size: 14px !important;
+}
+.nav-bottom-item a span {
+  font-size: 11px !important;
+  text-transform: capitalize;
+}
+
+.col-20 {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+.btn.active {
+  color: #4962ff;
+  box-shadow: none !important;
+}

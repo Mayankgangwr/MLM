@@ -1,0 +1,60 @@
+.col-student,
+.col-home {
+  padding: 1px 3px;
+  height: 100%;
+}
+
+.main {
+  margin-top: 40px;
+  margin-bottom: 61px;
+}
+
+.card {
+  box-shadow: 1px 1px 4px #000;
+}
+
+.block {
+  background: rgb(227 178 163);
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+.block1 {
+  background: rgb(243 241 152);
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+.block2 {
+  background: rgb(255 209 153);
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+.block3 {
+  background: rgb(249 209 209);
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+
+.block-heading {
+  text-shadow: 1px 1px 3px #fff;
+}
+
+.col-student {
+  box-shadow: 1px 1px 4px #000;
+}
+
+.col-student .card .card-body p {
+  height: 84px;
+}
+
+@media screen and (max-width: 1000px) {
+  .main {
+    margin-top: 40px;
+  }
+}
+
+.table > :not(caption) > * > * {
+  padding: 1rem 0.5rem;
+}
