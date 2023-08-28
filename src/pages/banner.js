@@ -110,7 +110,7 @@ const Banner = ({ slider }) => {
                 slider.map((el) => (
                   <div key={el.id} className="card m-1">
                     <div className="card-body p-0">
-                      <Link to={`/movie/${el.id}`}>
+                      <Link to={`/`}>
                         <img
                           src={`https://img.freepik.com/free-psd/special-sales-banner-template_23-2148975924.jpg?w=996&t=st=1693219826~exp=1693220426~hmac=8706e521cf2b26ccc9af8e05b7d22b9aea32028dee41609a53c43a88a3b715d6`}
                           className="slider-img"
