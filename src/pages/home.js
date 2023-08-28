@@ -25,7 +25,12 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <div className="container-fluid main px-0">
+      <div
+        className="main px-0"
+        style={{
+          overflow: "scroll",
+        }}
+      >
         <Banner slider={slider} />
         <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Shop by Categories
