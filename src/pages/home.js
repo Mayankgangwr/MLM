@@ -27,7 +27,7 @@ const Home = () => {
       <Nav />
       <div className="container-fluid main px-0">
         <Banner slider={slider} />
-        <p className="text-uppercase fs-6 p-1 pb-0 mb-0 fw-bold">
+        <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Shop by Categories
         </p>
         <div className="row my-0 mx-1">
@@ -50,7 +50,7 @@ const Home = () => {
               </div>
             ))}
         </div>
-        <p className="text-uppercase fs-6 p-1 pb-0 mb-0 fw-bold">
+        <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Popular Products
         </p>
         <div className="row mx-1 p-0">
