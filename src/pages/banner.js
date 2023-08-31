@@ -36,92 +36,97 @@ const Banner = ({ slider }) => {
   return (
     <>
       <div className="container-fluid banner pb-1 px-0">
-        <div className="row">
-          <div className="col-12 d-desktop p-0 m-0">
-            <Carousel {...settings}>
-              {slider.length > 0 &&
-                slider.map((el) => (
-                  <div
-                    key={el.id}
-                    className="row"
-                    style={{
-                      background:
-                        "linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12)",
-                      borderRadius: "15px",
-                      marginRight: "5px",
-                      marginLeft: "5px",
-                    }}
-                  >
-                    <div className="col-lg-5 col-md-6 col-sm-6 col-12">
-                      <div className="card banner-card mt-3 mx-1 mb-4 m-lg-5 m-md-5">
-                        <img
-                          src={el.img}
-                          style={{
-                            borderRadius: "15px",
-                          }}
-                        />
-                      </div>
+        {/* <div className="row"> */}
+        <div className="col-12 d-desktop p-0 m-0 mt-3">
+          <Carousel {...settings}>
+            {slider.length > 0 &&
+              slider.map((el) => (
+                <div
+                  key={el.id}
+                  className="row"
+                  style={{
+                    background:
+                      "linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12)",
+                    borderRadius: "15px",
+                    marginRight: "20px",
+                    marginLeft: "20px",
+                    width: "calc(100vw - 20px)",
+                  }}
+                >
+                  <div className="col-lg-5 col-md-6 col-sm-6 col-12">
+                    <div className="card banner-card mt-3 mx-1 mb-4 m-lg-5 m-md-5">
+                      <img
+                        src={`./img/${el.img}`}
+                        style={{
+                          borderRadius: "15px",
+                        }}
+                      />
                     </div>
-                    <div className="col-lg-7 col-md-6 col-sm-6 col-12">
-                      <h1
-                        className="mt-3 mt-md-5 mt-lg-5 ms-5"
-                        style={{ color: "#000" }}
+                  </div>
+                  <div className="col-lg-7 col-md-6 col-sm-6 col-12">
+                    <h1
+                      className="mt-3 mt-md-5 mt-lg-5 ms-5"
+                      style={{ color: "#000" }}
+                    >
+                      {el.name}
+                    </h1>
+                    <p className="bold ms-5 mt-4" style={{ color: "#000" }}>
+                      {el.starcast}
+                    </p>
+                    <hr className="mx-5 mt-4" />
+                    <div className="d-flex justify-content-center mt-4 mb-5">
+                      <Link
+                        to={`/movie/${el.id}`}
+                        class="btn text-white1 me-3"
+                        style={{ background: "#051937" }}
+                        data-mdb-ripple-color="dark"
                       >
-                        {`${el.title} (${el.year}) ${el.wood} Movie Download in 1080p `}
-                      </h1>
-                      <p className="bold ms-5 mt-4" style={{ color: "#000" }}>
-                        {el.starcast}
-                      </p>
-                      <hr className="mx-5 mt-4" />
-                      <div className="d-flex justify-content-center mt-4 mb-5">
-                        <Link
-                          to={`/movie/${el.id}`}
-                          class="btn text-white1 me-3"
-                          style={{ background: "#051937" }}
-                          data-mdb-ripple-color="dark"
-                        >
-                          {" "}
-                          Download
-                        </Link>
-                        <a
-                          href={`whatsapp://send?text=${window.location.href}`}
-                          data-action="share/whatsapp/share"
-                          target="_blank"
-                          class="btn ms-3"
-                          style={{
-                            border: "2px solid #051937",
-                            color: "#051937",
-                            fontSize: "13px",
-                            fontWeight: "bolder",
-                          }}
-                          data-mdb-ripple-color="dark"
-                        >
-                          Share
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </Carousel>
-          </div>
-          <div className="col-12 d-mobile p-0 m-0">
-            <Carousel {...settings}>
-              {slider.length > 0 &&
-                slider.map((el) => (
-                  <div key={el.id} className="card m-1">
-                    <div className="card-body p-0">
-                      <Link to={`/`}>
-                        <img
-                          src={`https://img.freepik.com/free-psd/special-sales-banner-template_23-2148975924.jpg?w=996&t=st=1693219826~exp=1693220426~hmac=8706e521cf2b26ccc9af8e05b7d22b9aea32028dee41609a53c43a88a3b715d6`}
-                          className="slider-img"
-                        />
+                        {" "}
+                        Download
                       </Link>
+                      <a
+                        href={`whatsapp://send?text=${window.location.href}`}
+                        data-action="share/whatsapp/share"
+                        target="_blank"
+                        class="btn ms-3"
+                        style={{
+                          border: "2px solid #051937",
+                          color: "#051937",
+                          fontSize: "13px",
+                          fontWeight: "bolder",
+                        }}
+                        data-mdb-ripple-color="dark"
+                      >
+                        Share
+                      </a>
                     </div>
                   </div>
-                ))}
-            </Carousel>
-          </div>
+                </div>
+              ))}
+          </Carousel>
         </div>
+        <div className="col-12 d-mobile p-0 m-0">
+          <Carousel {...settings}>
+            {slider.length > 0 &&
+              slider.slice(0, 3).map((el) => (
+                // <div key={el.id} className="card m-1">
+                //   <div className="card-body p-0">
+                //     <Link to={`/`}>
+                //       <img src={`./img/${el.img}`} className="slider-img" />
+                //     </Link>
+                //   </div>
+                // </div>
+                <Link to={`/`}>
+                  <img
+                    src={`./img/${el.img}`}
+                    className="slider-img"
+                    style={{ width: "99%", marginTop: "2px" }}
+                  />
+                </Link>
+              ))}
+          </Carousel>
+        </div>
+        {/* </div> */}
       </div>
     </>
   );

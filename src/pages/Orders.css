@@ -1,0 +1,21 @@
+.p-orderlist .p-orderlist-list .p-orderlist-item {
+  padding: 0.5rem 0.75rem !important;
+}
+.p-orderlist-controls {
+  display: none !important;
+}
+.p-orderlist-header {
+  height: 40px !important;
+  padding: 8px !important;
+  text-align: center !important;
+  position: fixed !important;
+  width: 100% !important;
+  z-index: 100 !important;
+}
+.p-orderlist-list {
+  padding-top: 0 !important;
+  min-height: auto !important;
+  max-height: max-content !important;
+  margin-bottom: 40px !important;
+  margin-top: 40px !important;
+}

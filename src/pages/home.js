@@ -5,90 +5,107 @@ import "./home.css";
 import { Link, useNavigate } from "react-router-dom";
 import Banner from "./banner";
 import axios from "axios";
+import { InputText } from "primereact/inputtext";
 
 const arr = [1, 2, 3, 4, 5];
 const Home = () => {
-  const [slider, setSlider] = useState([]);
-  useEffect(() => {
-    getMovie();
-  }, []);
-  function getMovie() {
-    axios
-      .get(`https://sattasafari.com/hotstar/read.php`)
-      .then(function (response) {
-        const slide = response.data.filter((item) => {
-          return item.tag.includes("slider");
-        });
-        setSlider(slide);
-      });
-  }
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      img: "b1.webp",
+      name: "Amritam",
+    },
+    {
+      id: 2,
+      img: "b2.webp",
+      name: "Aura",
+    },
+    {
+      id: 3,
+      img: "b3.webp",
+      name: "Balsahali",
+    },
+    {
+      id: 4,
+      img: "b4.avif",
+      name: "Brinjal",
+    },
+    {
+      id: 5,
+      img: "b11.avif",
+      name: "Brutal",
+    },
+    {
+      id: 6,
+      img: "b22.avif",
+      name: "DAP",
+    },
+    {
+      id: 7,
+      img: "b33.avif",
+      name: "Fresh",
+    },
+    {
+      id: 8,
+      img: "b44.avif",
+      name: "Tomatoes",
+    },
+  ]);
   return (
     <>
       <Nav />
-      <div
-        className="main px-0"
-        style={{
-          overflow: "scroll",
-        }}
-      >
-        <Banner slider={slider} />
+      <div className="main px-0">
+        <Banner slider={products} />
         <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Shop by Categories
         </p>
         <div className="row my-0 mx-1">
-          {slider.length > 0 &&
-            slider.map((el) => (
-              <div className="col-xl-1 col-lg-1 col-md-2 col-sm-3 col-3 mt-2">
-                <div className="circle">
-                  <img src={el.img} alt="Circular Image" />
-                </div>
-                <span>Name</span>
+          {products.slice(0, 6).map((el) => (
+            <div className="col-xl-1 col-lg-1 col-md-2 col-sm-4 col-4 mt-2 text-center">
+              <div className="circle">
+                <img src={`./img/${el.img}`} alt="Circular Image" />
               </div>
-            ))}
-          {slider.length > 0 &&
-            slider.slice(0, 3).map((el) => (
-              <div className="col-xl-1 col-lg-1 col-md-2 col-sm-3 col-3 mt-2">
-                <div className="circle">
-                  <img src={el.img} alt="Circular Image" />
-                </div>
-                <span>Name</span>
-              </div>
-            ))}
+              <span>{el.name}</span>
+            </div>
+          ))}
         </div>
         <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Popular Products
         </p>
-        <div className="row mx-1 p-0">
-          {slider.length > 0 &&
-            slider.map((el) => (
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 m-0">
+        <div className="row mx-1 p-0 mb-5">
+          {products.length > 0 &&
+            products.map((el) => (
+              /* <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 m-0 mt-1 text-center">
                 <div key={el.id} className="card mx-1 my-1">
                   <div className="card-body p-0">
                     <Link to={`/`}>
-                      <img
-                        src={`https://img.freepik.com/free-psd/special-sales-banner-template_23-2148975924.jpg?w=996&t=st=1693219826~exp=1693220426~hmac=8706e521cf2b26ccc9af8e05b7d22b9aea32028dee41609a53c43a88a3b715d6`}
-                        className="pro-img"
-                      />
+                      <img src={`./img/${el.img}`} className="pro-img" />
                     </Link>
                   </div>
                 </div>
-                <span>Pro Name</span>
-              </div>
-            ))}
-          {slider.length > 0 &&
-            slider.slice(0, 3).map((el) => (
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 m-0">
-                <div key={el.id} className="card mx-1 my-1">
-                  <div className="card-body p-0">
-                    <Link to={`/`}>
-                      <img
-                        src={`https://img.freepik.com/free-psd/special-sales-banner-template_23-2148975924.jpg?w=996&t=st=1693219826~exp=1693220426~hmac=8706e521cf2b26ccc9af8e05b7d22b9aea32028dee41609a53c43a88a3b715d6`}
-                        className="pro-img"
-                      />
-                    </Link>
+                <span>{el.name}</span>
+              </div> */
+              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 mt-5">
+                <div key={el.id} className="pcard">
+                  <Link to={`/`}>
+                    <img
+                      src={`./img/${el.img}`}
+                      className="pro-img"
+                      style={{ width: "92.5%" }}
+                    />
+                  </Link>
+                  <p>{el.name}</p>
+                  <div
+                    className="d-flex align-items-center"
+                    style={{ lineHeight: "10px", marginBottom: "5px" }}
+                  >
+                    <i
+                      class="fas fa-indian-rupee-sign"
+                      style={{ fontSize: "13px", marginRight: "2px" }}
+                    ></i>
+                    <span>000</span>
                   </div>
                 </div>
-                <span>Pro Name</span>
               </div>
             ))}
         </div>

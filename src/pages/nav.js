@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./nav.css";
+import { InputText } from "primereact/inputtext";
 const Nav = () => {
   const links = ["home", "team", "inventory", "income", "profile"];
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light-green py-4 px-0 m-pading fixed-top">
-        <div className="container-fluid pe-0">
-          <Link className="navbar-brand mt-lg-2 d-mobile logo-6" href="/">
+        <div className="container-fluid p-0">
+          <Link className="navbar-brand mt-lg-2 d-mobile logo-6 ps-1" href="/">
             <h6>
               Agro<span>pean</span>
             </h6>
@@ -17,16 +18,20 @@ const Nav = () => {
               <NavLink
                 activeClassName="active"
                 to="/login"
-                className="btn p-1"
-                style={{ gap: "1px", color: "#fff" }}
+                className="btn p-1 mt-0 pe-0 text-white gap-0"
               >
                 <i class="pi pi-user"></i>
                 <span>Login</span>
               </NavLink>
+              <NavLink
+                activeClassName="active"
+                to="/cart"
+                className="btn p-1 mt-0 pe-0 text-white gap-0 d-none"
+              >
+                <i class="pi pi-shopping-cart"></i>
+                <span>Cart</span>
+              </NavLink>
             </div>
-            {/* <a className="text-reset fw-300 me-2" href="#">
-              Login
-            </a> */}
           </div>
           <div
             className="collapse navbar-collapse d-desktop"

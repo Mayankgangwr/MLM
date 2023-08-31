@@ -14,7 +14,12 @@ nav {
 }
 
 .bg-light-green {
-  background-color: #009270;
+  background: rgb(148, 201, 120);
+  background: linear-gradient(
+    0deg,
+    rgba(148, 201, 120, 1) 0%,
+    rgba(61, 79, 57, 1) 100%
+  );
   color: #fff;
   font-weight: 100;
 }
@@ -119,4 +124,11 @@ nav {
 .btn.active {
   color: #4962ff;
   box-shadow: none !important;
+}
+.search-box {
+  margin-bottom: 5px;
+  width: 100%;
+  margin-right: 15px;
+  margin-left: 15px;
+  border-radius: 6px;
 }

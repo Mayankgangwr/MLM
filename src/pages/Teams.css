@@ -1,0 +1,7 @@
+/* Responsive styles for smaller screens */
+@media (max-width: 767px) {
+  .card {
+    width: 100%; /* Make the chart fill the screen width */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+  }
+}

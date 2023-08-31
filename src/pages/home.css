@@ -7,6 +7,7 @@
 .main {
   margin-top: 40px;
   margin-bottom: 61px;
+  overflow-y: scroll;
 }
 
 .card {
@@ -49,12 +50,6 @@
   height: 84px;
 }
 
-@media screen and (max-width: 1000px) {
-  .main {
-    margin-top: 40px;
-  }
-}
-
 .table > :not(caption) > * > * {
   padding: 1rem 0.5rem;
 }
@@ -66,7 +61,7 @@
 
 .circle img {
   width: 100%;
-  object-fit: cover;
+  height: 80px;
 }
 .reactangle {
   border-radius: 5px;
