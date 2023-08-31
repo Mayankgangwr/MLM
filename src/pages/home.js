@@ -61,7 +61,12 @@ const Home = () => {
         </p>
         <div className="row my-0 mx-1">
           {products.slice(0, 6).map((el) => (
-            <div className="col-xl-1 col-lg-1 col-md-2 col-sm-4 col-4 mt-2 text-center">
+            <div
+              className="col-xl-1 col-lg-1 col-md-2 col-sm-4 col-4 mt-2 text-center d-flex align-items-center justify-content-center"
+              style={{
+                flexDirection: "column",
+              }}
+            >
               <div className="circle">
                 <img src={`./img/${el.img}`} alt="Circular Image" />
               </div>
