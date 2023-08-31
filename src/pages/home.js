@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Banner from "./banner";
 import axios from "axios";
 import { InputText } from "primereact/inputtext";
-
+import Cat from "./cat";
 const arr = [1, 2, 3, 4, 5];
 const Home = () => {
   const [products, setProducts] = useState([
@@ -59,7 +59,8 @@ const Home = () => {
         <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Shop by Categories
         </p>
-        <div className="row my-0 mx-1">
+        <Cat slider={products} />
+        {/* <div className="row my-0 mx-1">
           {products.slice(0, 6).map((el) => (
             <div
               className="col-xl-1 col-lg-1 col-md-2 col-sm-4 col-4 mt-2 text-center d-flex align-items-center justify-content-center"
@@ -73,24 +74,14 @@ const Home = () => {
               <span>{el.name}</span>
             </div>
           ))}
-        </div>
+        </div> */}
         <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
           Popular Products
         </p>
         <div className="row mx-1 p-0 mb-5">
           {products.length > 0 &&
             products.map((el) => (
-              /* <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 m-0 mt-1 text-center">
-                <div key={el.id} className="card mx-1 my-1">
-                  <div className="card-body p-0">
-                    <Link to={`/`}>
-                      <img src={`./img/${el.img}`} className="pro-img" />
-                    </Link>
-                  </div>
-                </div>
-                <span>{el.name}</span>
-              </div> */
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 mt-5">
+              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 p-0 mt-5">
                 <div key={el.id} className="pcard">
                   <Link to={`/`}>
                     <img

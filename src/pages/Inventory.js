@@ -120,7 +120,7 @@ const Inventory = () => {
             Filter
           </button>
         </div>
-        <div className="row mx-1 p-0" style={{marginBottom: '3.5rem'}}>
+        <div className="row mx-1 p-0" style={{ marginBottom: "3.5rem" }}>
           {products.length > 0 &&
             products.map((el) => (
               // <div className="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 p-0">
@@ -150,7 +150,7 @@ const Inventory = () => {
               //     </div>
               //   </div> */}
               // </div>
-              <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 p-0 mt-5">
+              <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-4 p-0 mt-5">
                 <div key={el.id} className="pcard">
                   <Link to={`/`}>
                     <img
