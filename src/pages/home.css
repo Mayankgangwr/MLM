@@ -60,22 +60,34 @@
   width: 130px;
   height: 130px;
 }
-@media screen and (max-width: 360px) and (min-width: 300px) {
+@media screen and (max-width: 330px) and (min-width: 300px) {
+  .circle {
+    width: 95px;
+    height: 95px;
+  }
+}
+@media screen and (max-width: 350px) and (min-width: 330px) {
   .circle {
     width: 100px;
     height: 100px;
   }
 }
-@media screen and (max-width: 400px) and (min-width: 360px) {
+@media screen and (max-width: 390px) and (min-width: 360px) {
+  .circle {
+    width: 105px;
+    height: 105px;
+  }
+}
+@media screen and (max-width: 420px) and (min-width: 390px) {
   .circle {
     width: 110px;
     height: 110px;
   }
 }
-@media screen and (max-width: 440px) and (min-width: 400px) {
+@media screen and (max-width: 450px) and (min-width: 420px) {
   .circle {
-    width: 120px;
-    height: 120px;
+    width: 115px;
+    height: 115px;
   }
 }
 .circle img {
