@@ -4,6 +4,24 @@ import BottomNav from "./bottomnav";
 import "./home.css";
 import "./inventory.css";
 import { Link } from "react-router-dom";
+import { Card } from "primereact/card";
+import { Button } from "primereact/button";
+const header = (
+  <img
+    alt="Card"
+    src="https://primefaces.org/cdn/primereact/images/usercard.png"
+  />
+);
+const footer = (
+  <div className="flex flex-wrap justify-content-end gap-2">
+    <Button label="Save" icon="pi pi-check" />
+    <Button
+      label="Cancel"
+      icon="pi pi-times"
+      className="p-button-outlined p-button-secondary"
+    />
+  </div>
+);
 const Inventory = () => {
   const [products, setProducts] = useState([
     {
@@ -51,7 +69,6 @@ const Inventory = () => {
   const [sort, setSort] = useState(false);
   const filterPro = (inp) => {
     const val = inp.target.value;
-
     products.filter((pro) => pro.name.indexOf(val));
   };
 
@@ -65,12 +82,14 @@ const Inventory = () => {
     <>
       <Nav />
       <div className="main px-0">
-        <div className="d-flex justify-content-between">
-          <Link to={`/`}>
+        <div className="d-flex justify-content-center">
+          {/*
+           <Link to={`/`}>
             <i className="pi pi-arrow-left fs-6 p-2 m-2 fw-bold rounded btn"></i>
-          </Link>
-          <p className="text-center fs-6 p-1 pb-0 my-2 fw-400">All Products</p>
-          <div className="d-flex">
+          </Link> 
+          */}
+          <p className="text-center fs-6 p-1 pb-0 my-0 fw-400">All Products</p>
+          {/* <div className="d-flex">
             <i
               className="pi pi-search fs-6 p-2 m-2 fw-bold rounded btn"
               onClick={() => {
@@ -96,11 +115,15 @@ const Inventory = () => {
                 onClick={() => {
                   setShow(!show);
                 }}
-                style={{ borderRadius: "0px 13px 13px 0px" }}
+                style={{
+                  borderRadius: "0px 13px 13px 0px",
+                }}
               ></i>
             </div>
-          </div>
+          </div> */}
         </div>
+        {/*  Search button 
+
         <div className="d-flex mt-2 mb-0 px-2 justify-content-between">
           <button
             className="btn rounded-2 py-2 px-4"
@@ -119,37 +142,11 @@ const Inventory = () => {
             <i className="pi pi-sliders-h me-2"></i>
             Filter
           </button>
-        </div>
+        </div> 
+        */}
         <div className="row mx-1 p-0" style={{ marginBottom: "3.5rem" }}>
           {products.length > 0 &&
             products.map((el) => (
-              // <div className="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 p-0">
-              //   {/* <div key={el.id} className="pcard">
-              //     <img className="pro-img" src={`./img/chair.png`} />
-              //     <p>{el.name}</p>
-              //     <div
-              //       className="d-flex align-items-center"
-              //       style={{ lineHeight: "10px", marginBottom: "5px" }}
-              //     >
-              //       <i
-              //         class="fas fa-indian-rupee-sign"
-              //         style={{ fontSize: "13px", marginRight: "2px" }}
-              //       ></i>
-              //       <span>000</span>
-              //     </div>
-              //   </div> */}
-              //   {/* <div key={el.id} className="card m-1">
-              //     <div className="card-body p-0">
-              //       <Link to={`/`}>
-              //         <img
-              //           src={`./img/chair.png`}
-              //           className="slider-img"
-              //           style={{ height: "100px" }}
-              //         />
-              //       </Link>
-              //     </div>
-              //   </div> */}
-              // </div>
               <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-4 p-0 mt-5">
                 <div key={el.id} className="pcard">
                   <Link to={`/`}>
@@ -162,13 +159,21 @@ const Inventory = () => {
                   <p>{el.name}</p>
                   <div
                     className="d-flex align-items-center"
-                    style={{ lineHeight: "10px", marginBottom: "5px" }}
+                    style={{
+                      lineHeight: "10px",
+                      marginBottom: "5px",
+                      fontSize: "11px",
+                    }}
                   >
                     <i
                       class="fas fa-indian-rupee-sign"
-                      style={{ fontSize: "13px", marginRight: "2px" }}
+                      style={{
+                        fontSize: "11px",
+                        marginRight: "2px",
+                        lineHeight: "10px",
+                      }}
                     ></i>
-                    <span>000</span>
+                    <span>123</span>
                   </div>
                 </div>
               </div>

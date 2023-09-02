@@ -56,26 +56,11 @@ const Home = () => {
       <Nav />
       <div className="main px-0">
         <Banner slider={products} />
-        <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
+        <p className="text-uppercase fs-6 p-1 pb-0 mt-2 mb-0 fst-italic fw-bold">
           Shop by Categories
         </p>
         <Cat slider={products} />
-        {/* <div className="row my-0 mx-1">
-          {products.slice(0, 6).map((el) => (
-            <div
-              className="col-xl-1 col-lg-1 col-md-2 col-sm-4 col-4 mt-2 text-center d-flex align-items-center justify-content-center"
-              style={{
-                flexDirection: "column",
-              }}
-            >
-              <div className="circle">
-                <img src={`./img/${el.img}`} alt="Circular Image" />
-              </div>
-              <span>{el.name}</span>
-            </div>
-          ))}
-        </div> */}
-        <p className="text-uppercase fs-6 p-1 pb-0 my-2 fw-bold">
+        <p className="text-uppercase fs-6 p-1 pb-0 mt-2 mb-0 fst-italic fw-bold">
           Popular Products
         </p>
         <div className="row mx-1 p-0 mb-5">
@@ -93,20 +78,27 @@ const Home = () => {
                   <p>{el.name}</p>
                   <div
                     className="d-flex align-items-center"
-                    style={{ lineHeight: "10px", marginBottom: "5px" }}
+                    style={{
+                      lineHeight: "10px",
+                      marginBottom: "5px",
+                      fontSize: "11px",
+                    }}
                   >
                     <i
                       class="fas fa-indian-rupee-sign"
-                      style={{ fontSize: "13px", marginRight: "2px" }}
+                      style={{
+                        fontSize: "11px",
+                        marginRight: "2px",
+                        lineHeight: "10px",
+                      }}
                     ></i>
-                    <span>000</span>
+                    <span>123</span>
                   </div>
                 </div>
               </div>
             ))}
         </div>
       </div>
-
       <BottomNav />
     </>
   );
