@@ -143,11 +143,25 @@ export default function Orders() {
     <>
       <Nav />
       <div style={{ marginTop: "45px", paddingBottom: "60px" }}>
+        <div className="p-message p-component p-message-warn p-message-enter-done order-card">
+          <div className="p-message-wrapper">
+            <span className="summary">Total Selling:</span>
+            <span className="detail">₹10000</span>
+          </div>
+          <div className="p-message-wrapper">
+            <span className="summary">You Earn:</span>
+            <span className="detail">₹1000</span>
+          </div>
+        </div>
         {ord.map((el) => (
           <div
             key={el}
             className="card flex justify-content-center shadow-3"
-            style={{ marginTop: "15px", borderRadius: "2px" }}
+            style={{
+              marginTop: "5px",
+              marginBottom: "10px",
+              borderRadius: "2px",
+            }}
           >
             <Card footer={footer} header={header}>
               {products.slice(0, 4).map((item) => itemTemplate(item))}
