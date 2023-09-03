@@ -36,12 +36,13 @@ const BottomNav = () => {
               <span>Orders</span>
             </NavLink>
           </div>
-          <div className="col-20 nav-bottom-item">
+          {/* Hide Income tab for some time */}
+          {/* <div className="col-20 nav-bottom-item">
             <NavLink activeClassName="active" to="/income" className="btn p-1">
               <i class="fas fa-indian-rupee-sign"></i>
               <span>Income</span>
             </NavLink>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

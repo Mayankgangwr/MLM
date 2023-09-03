@@ -5,3 +5,12 @@
     overflow-x: auto; /* Allow horizontal scrolling if needed */
   }
 }
+.bg-indigo-500 {
+  background-color: #6366f1 !important;
+}
+.bg-purple-500 {
+  background-color: #a855f7 !important;
+}
+.bg-teal-500 {
+  background-color: #14b8a6 !important;
+}

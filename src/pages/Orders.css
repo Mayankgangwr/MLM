@@ -55,7 +55,7 @@
   border-width: 0 4px 0 4px !important;
   display: flex !important;
   justify-content: space-between !important;
-  padding: 0 4px !important;
+  padding: 0 4px;
   border-radius: 3px !important;
 }
 .order-card .p-message-wrapper {

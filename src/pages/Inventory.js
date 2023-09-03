@@ -88,7 +88,9 @@ const Inventory = () => {
             <i className="pi pi-arrow-left fs-6 p-2 m-2 fw-bold rounded btn"></i>
           </Link> 
           */}
-          <p className="text-center fs-6 p-1 pb-0 my-0 fw-400">All Products</p>
+          <p className="text-center fs-6 p-1 pb-0 my-0 fw-400 fst-italic fw-bold">
+            All Products
+          </p>
           {/* <div className="d-flex">
             <i
               className="pi pi-search fs-6 p-2 m-2 fw-bold rounded btn"

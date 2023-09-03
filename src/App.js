@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Inventory from "./pages/Inventory";
 import Teams from "./pages/Teams";
 import Orders from "./pages/Orders";
+import Login from "./pages/Login";
 export default function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/orders" element={<Orders />} exact />
         <Route path="/income" element={<Home />} exact />
         <Route path="/profile" element={<Home />} exact />
+        <Route path="/login" element={<Login />} exact />
       </Routes>
     </BrowserRouter>
   );
