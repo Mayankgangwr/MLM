@@ -8,20 +8,24 @@ const Login = () => {
   return (
     <>
       <div className="container-fluid card login-card">
+        <Link
+          to="/"
+          style={{ width: "100%", paddingLeft: "10px", marginTop: "10px" }}
+        >
+          <i className="pi pi-arrow-left" style={{ cursor: "pointer" }}></i>
+        </Link>
         <form
-          className="login-form card"
+          className="login-form"
           onSubmit={() => {
             alert("Login Successfull");
             navigate("/");
           }}
         >
-          <Link to="/" className="text-end">
-            <i
-              className="pi pi-times text-end"
-              style={{ cursor: "pointer" }}
-            ></i>
-          </Link>
-          <img alt="" src="./img/logo1.png" className="login-logo mx-auto" />
+          <div className="login-logo-block">
+            {" "}
+            <img alt="" src="./img/logo1.png" className="login-logo mx-auto" />
+          </div>
+
           {/* <span className="login-header">Agro Pean</span> */}
           <div className="form-outline login-field">
             <input

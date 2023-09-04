@@ -142,7 +142,7 @@ export default function Orders() {
   return (
     <>
       <Nav />
-      <div style={{ marginTop: "41px", paddingBottom: "60px" }}>
+      <div style={{ marginTop: "46px", paddingBottom: "60px" }}>
         <div className="p-message p-component p-message-warn p-message-enter-done order-card">
           <div className="p-message-wrapper">
             <span className="summary">Total Selling:</span>
