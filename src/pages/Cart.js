@@ -4,25 +4,11 @@ import "./Orders.css";
 import Nav from "./nav";
 import BottomNav from "./bottomnav";
 import { Card } from "primereact/card";
-import { Button } from "primereact/button";
+import { InputNumber } from "primereact/inputnumber";
 
-const header = (item) => {
-  return (
-    <div className="p-message p-component p-message-info p-message-enter-done order-card">
-      <div className="p-message-wrapper">
-        <span className="summary">ORD-ID:</span>
-        <span className="detail">{item.orderId}</span>
-      </div>
-      <div className="p-message-wrapper">
-        <span className="summary">ORD-AT:</span>
-        <span className="detail">{item.date}</span>
-      </div>
-    </div>
-  );
-};
 const footer = (item) => {
   return (
-    <div className="p-message p-component p-message-success p-message-enter-done order-footer">
+    <div className="p-message p-component p-message-success p-message-enter-done pb-2 order-footer">
       <div className="left-summery d-flex align-items-start justify-content-between">
         <div className="p-message-wrapper">
           <span className="summary">{`Product Qty : `}</span>
@@ -35,12 +21,6 @@ const footer = (item) => {
         </div>
         <div className="p-message-wrapper">
           <span className="summary">{`Grand Total : `}</span>
-        </div>
-        <div className="p-message-wrapper">
-          <span className="summary">{`Order Status : `}</span>
-        </div>
-        <div className="p-message-wrapper">
-          <span className="summary">{`Action : `}</span>
         </div>
       </div>
       <div className="left-summery d-flex justify-content-between">
@@ -56,26 +36,15 @@ const footer = (item) => {
         <div className="p-message-wrapper">
           <span className="detail">{`₹${item.grandTotal}`}</span>
         </div>
-        <div className="p-message-wrapper">
-          <span className="detail">{`${item.status}`}</span>
-        </div>
-        <div className="p-message-wrapper">
-          <span
-            className="detail"
-            style={{ cursor: "pointer" }}
-          >{`Click Here`}</span>
-        </div>
       </div>
     </div>
   );
 };
-export default function Orders() {
-  const [products, setProducts] = useState([]);
-  const [order, setOrder] = useState(null);
+export default function Cart() {
+  const [cart, setCart] = useState(null);
   useEffect(() => {
-    const orderData = JSON.parse(localStorage.getItem("userData"));
-    orderData && setOrder(orderData);
-    ProductService.getProductsSmall().then((data) => setProducts(data));
+    const cartData = JSON.parse(localStorage.getItem("userData"));
+    cartData && setCart(cartData);
   }, []);
 
   const itemTemplate = (item) => {
@@ -123,15 +92,15 @@ export default function Orders() {
               </span>
             </div>
           </div>
-          <div className="flex-1 d-flex xl:mr-8 qty-total-price-card">
-            {/* <div
+          <div className="flex-1 d-flex xl:mr-8 qty-total-price-card justify-content-between">
+            <div
               className="d-flex justify-content-between"
-              style={{ width: "100px" }}
+              style={{ width: "90px", alignItems: "center" }}
             >
-              <i className="pi pi-minus fs-6 fw-bold rounded btn qty-icon"></i>
+              <i className="pi pi-minus fw-bold rounded border btn qty-icon"></i>
               <InputNumber inputId="minmax" value={100} />
-              <i className="pi pi-plus fs-6 fw-bold rounded btn qty-icon"></i>
-            </div> */}
+              <i className="pi pi-plus fw-bold rounded border btn qty-icon"></i>
+            </div>
             <span className="fst-italic total-price-card">
               {`Size : 250ml`}
             </span>
@@ -140,7 +109,6 @@ export default function Orders() {
       </>
     );
   };
-  const ord = [1, 2, 3, 4];
   return (
     <>
       <Nav />
@@ -155,23 +123,20 @@ export default function Orders() {
             <span className="detail">₹1000</span>
           </div>
         </div>
-        {order != null &&
-          order.order.map((el) => (
-            <div
-              key={el}
-              className="card flex justify-content-center shadow-3"
-              style={{
-                marginTop: "5px",
-                marginBottom: "10px",
-                borderRadius: "2px",
-              }}
-            >
-              <Card footer={footer(el)} header={header(el)}>
-                {el.items.map((item) => itemTemplate(item))}
-              </Card>
-            </div>
-          ))}
-
+        <div
+          className="card flex justify-content-center shadow-3"
+          style={{
+            marginTop: "5px",
+            marginBottom: "10px",
+            borderRadius: "2px",
+          }}
+        >
+          {cart != null && (
+            <Card footer={footer(cart.cart)}>
+              {cart.cart.items.map((item) => itemTemplate(item))}
+            </Card>
+          )}
+        </div>
         <BottomNav />
       </div>
     </>

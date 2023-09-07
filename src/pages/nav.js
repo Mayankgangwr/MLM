@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./nav.css";
 import { TieredMenu } from "primereact/tieredmenu";
 const Nav = () => {
+  const navigate = useNavigate();
   const links = ["home", "team", "inventory", "income", "profile"];
-  const [islogged, SetIslogged] = useState(false);
+  const [islogged, setIslogged] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+  const [user, setUser] = useState(null);
   const items = [
     {
       label: "File",
@@ -39,6 +41,37 @@ const Nav = () => {
       ],
     },
   ];
+  useEffect(() => {
+    let userData = null;
+    userData = JSON.parse(localStorage.getItem("userData"));
+    console.log(localStorage.getItem("userData"));
+    if (userData != null) {
+      setUser(userData);
+      setIslogged(true);
+    }
+  });
+  const NameAvtar = () => {
+    const nameArr = user.user.name.split(" ");
+    return (
+      <>
+        <div>{nameArr[0].charAt(0)}</div>
+        <div
+          style={{
+            textTransform: "uppercase",
+            transform: "scaleX(-1)",
+            display: "inline-block",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {nameArr[1].charAt(0)}
+        </div>
+      </>
+    );
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    navigate("/login");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light-green py-4 px-0 m-pading fixed-top">
@@ -57,19 +90,45 @@ const Nav = () => {
             <div className="col-20 nav-bottom-item">
               {islogged ? (
                 <>
-                  <div className="btn p-1 mt-0 pe-0 me-1 text-white gap-0">
-                    <img
-                      alt="user-img"
-                      src="./img/b11.avif"
-                      style={{
-                        width: "32px",
-                        height: "32px",
-                        borderRadius: "50%",
-                      }}
-                      onClick={() => {
-                        setIsMenu(!isMenu);
-                      }}
-                    />
+                  <div
+                    className="btn text-white p-0 m-0 mt-2 me-1"
+                    style={{
+                      width: "37.5px",
+                      height: "37.5px",
+                      borderRadius: "50%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      background: "#512DA8",
+                    }}
+                  >
+                    {!user.user.image ? (
+                      <img
+                        alt="user-img"
+                        src="./img/b11.avif"
+                        style={{
+                          width: "37px",
+                          height: "37px",
+                          borderRadius: "50%",
+                        }}
+                        onClick={() => {
+                          setIsMenu(!isMenu);
+                        }}
+                      />
+                    ) : (
+                      <span
+                        style={{
+                          fontSize: "22px",
+                          display: "flex",
+                        }}
+                        onClick={() => {
+                          setIsMenu(!isMenu);
+                        }}
+                      >
+                        {NameAvtar()}
+                      </span>
+                    )}
+
                     {isMenu ? (
                       <ul
                         className="dropdown-menu dropdown-menu-end d-block  bg-light shadow-2"
@@ -80,27 +139,66 @@ const Nav = () => {
                           top: "35px",
                         }}
                       >
-                        <li>
+                        <li style={{ padding: "4px 0px" }}>
                           <Link
-                            className="dropdown-item text-capitalize"
-                            to={`/profile`}
+                            activeClassName="active"
+                            to="/profile"
+                            className="btn p-1 mt-0 pe-0 d-flex justify-content-start align-items-center"
+                            style={{
+                              flexDirection: "row",
+                              gap: "8px",
+                              marginLeft: "1rem",
+                            }}
                           >
-                            {`Profile`}
+                            <i class="far fa-user"></i>
+                            <span>Profile</span>
                           </Link>
                         </li>
-                        <li>
+                        <li style={{ padding: "4px 0px" }}>
                           <Link
-                            className="dropdown-item text-capitalize"
-                            to={`/cart`}
+                            activeClassName="active"
+                            to="/cart"
+                            className="btn p-1 mt-0 pe-0 d-flex justify-content-start align-items-center"
+                            style={{
+                              flexDirection: "row",
+                              gap: "8px",
+                              marginLeft: "1rem",
+                            }}
                           >
-                            {`Cart`}
+                            <i class="pi pi-shopping-cart"></i>
+                            <span>Cart</span>
                           </Link>
+                        </li>
+                        <li style={{ padding: "4px 0px" }}>
                           <Link
-                            className="dropdown-item text-capitalize"
-                            to={`/income`}
+                            activeClassName="active"
+                            to="/income"
+                            className="btn p-1 mt-0 pe-0 d-flex justify-content-start align-items-center"
+                            style={{
+                              flexDirection: "row",
+                              gap: "8px",
+                              marginLeft: "1rem",
+                            }}
                           >
-                            {`Income`}
+                            <i class="fas fa-indian-rupee-sign"></i>
+                            <span>Income</span>
                           </Link>
+                        </li>
+                        <li style={{ padding: "4px 0px" }}>
+                          <div
+                            className="btn p-1 mt-0 pe-0 d-flex justify-content-start text-capitalize align-items-center"
+                            style={{
+                              flexDirection: "row",
+                              gap: "8px",
+                              marginLeft: "1rem",
+                              fontWeight: "300",
+                              textAlign: "center",
+                              boxShadow: "none",
+                            }}
+                          >
+                            <i class="fas fa-arrow-right-from-bracket"></i>
+                            <span>Logout</span>
+                          </div>
                         </li>
                       </ul>
                     ) : (
@@ -112,7 +210,7 @@ const Nav = () => {
                 <NavLink
                   activeClassName="active"
                   to="/login"
-                  className="btn p-1 mt-0 pe-0 text-white gap-0"
+                  className="btn p-1 mt-2 pe-0 text-white gap-0"
                 >
                   <i class="pi pi-user"></i>
                   <span>Login</span>

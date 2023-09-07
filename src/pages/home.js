@@ -4,11 +4,13 @@ import BottomNav from "./bottomnav";
 import "./home.css";
 import { Link, useNavigate } from "react-router-dom";
 import Banner from "./banner";
+//import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { InputText } from "primereact/inputtext";
 import Cat from "./cat";
 const arr = [1, 2, 3, 4, 5];
 const Home = () => {
+  const [user, setUser] = useState(null);
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -51,12 +53,18 @@ const Home = () => {
       name: "Tomatoes",
     },
   ]);
+  // const users = useSelector((state) => state.addReducer.users);
+  // const dispatch = useDispatch();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userData"));
+    user && setUser(user);
+  });
   return (
     <>
       <Nav />
       <div className="main px-0">
         <Banner slider={products} />
-        <p className="text-uppercase fs-6 p-1 pb-0 mt-2 mb-0 fst-italic fw-bold">
+        <p className="text-uppercase fs-6 p-1 pb-0 mt-1 mb-0 fst-italic fw-bold">
           Shop by Categories
         </p>
         <Cat slider={products} />

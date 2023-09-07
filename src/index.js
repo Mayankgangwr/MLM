@@ -5,7 +5,7 @@ import "primereact/resources/primereact.css"; // core css
 
 import App from "./App";
 
-const rootElement = document.getElementById("root1");
+const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
