@@ -1,10 +1,9 @@
 import axios from "axios";
-const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 const Apicalls = {
   handleLogin() {
     const response = axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/users/login`,
+      `https://mlm-backend-api.onrender.com/api/users/login`,
       {
         email: email,
         password: password,
@@ -14,14 +13,14 @@ const Apicalls = {
   },
   async handleAddProducts(product) {
     const response = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}products`,
+      `https://mlm-backend-api.onrender.com/api/products`,
       product
     );
     return response;
   },
   async handleGetProducts() {
     const response = await axios.get(
-      `${process.env.REACT_APP_API_BASE_URL}products`
+      `https://mlm-backend-api.onrender.com/api/products`
     );
     return response;
   },
