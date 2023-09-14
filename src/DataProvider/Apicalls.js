@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Apicalls = {
-  handleLogin() {
+  handleLogin(email, password) {
     const response = axios.post(
       `https://mlm-backend-api.onrender.com/api/users/login`,
       {

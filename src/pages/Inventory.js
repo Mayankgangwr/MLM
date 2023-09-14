@@ -33,7 +33,6 @@ const Inventory = () => {
     Apicalls.handleGetProducts()
       .then((response) => {
         setProducts(response.data);
-        console.log("Product Add successfully", response.data);
       })
       .catch((error) => {
         console.error("Product Add failed", error);
@@ -152,7 +151,7 @@ const Inventory = () => {
                     ></i>
                     <div className="d-flex" style={{ gap: "3px" }}>
                       <span className="pro-price">{el.price}</span>
-                      <span className="pro-mrp">{el.mrp}</span>
+                      <span className="pro-mrp">{`₹${el.mrp}`}</span>
                     </div>
                   </div>
                 </div>

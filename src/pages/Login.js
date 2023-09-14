@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Apicalls from "../DataProvider/Apicalls";
 const Login = () => {
   const [email, setEmail] = useState("prince@gmail.com");
   const [password, setPassword] = useState("Prince@99");
@@ -16,16 +17,8 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    debugger;
-    const apiUrl = process.env.REACT_APP_API_BASE_URL;
-
-    axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}/users/login`, {
-        email: email,
-        password: password,
-      })
+    Apicalls.handleLogin(email, password)
       .then((response) => {
-        console.log("Login successful", response.data);
         localStorage.setItem("userData", JSON.stringify(response.data));
         navigate("/");
       })
