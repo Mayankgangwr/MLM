@@ -20,7 +20,8 @@ const Login = () => {
     Apicalls.handleLogin(email, password)
       .then((response) => {
         localStorage.setItem("userData", JSON.stringify(response.data));
-        navigate("/");
+        window.location.replace("/");
+        //        navigate("/");
       })
       .catch((error) => {
         console.error("Login failed", error);
