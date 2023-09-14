@@ -4,6 +4,7 @@ import { Column } from "primereact/column";
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "./nav";
 import BottomNav from "./bottomnav";
+
 export default function Teams() {
   const [nodes] = useState([
     {

@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import ImageUpload from "./ImageUpload";
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
+import AddProductForm from "./pages/Addproducts";
 export default function App() {
   return (
     <BrowserRouter>
@@ -17,7 +19,8 @@ export default function App() {
           <Route path="/orders" element={<Orders />} exact />
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/income" element={<Home />} exact />
-          <Route path="/profile" element={<Home />} exact />
+          <Route path="/profile" element={<Profile />} exact />
+          <Route path="/addpro" element={<AddProductForm />} exact />
         </Route>
         <Route path="/fileupload" element={<ImageUpload />} exact />
         <Route index element={<Home />} exact />

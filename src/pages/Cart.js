@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { ProductService } from "./ProductService";
+import { NavLink } from "react-router-dom";
 import "./Orders.css";
+import "./Cart.css";
 import Nav from "./nav";
 import BottomNav from "./bottomnav";
 import { Card } from "primereact/card";
 import { InputNumber } from "primereact/inputnumber";
 
-const footer = (item) => {
+const footer = (cart) => {
+  const qty = cart.reduce((total, el) => (total = total + el.qty), 0);
+  const price = cart.reduce((total, el) => (total = total + el.price), 0);
   return (
     <div className="p-message p-component p-message-success p-message-enter-done pb-2 order-footer">
       <div className="left-summery d-flex align-items-start justify-content-between">
@@ -25,16 +28,20 @@ const footer = (item) => {
       </div>
       <div className="left-summery d-flex justify-content-between">
         <div className="p-message-wrapper">
-          <span className="detail">{`${item.totalqty}`}</span>
+          <span className="detail">{`${qty}`}</span>
         </div>
         <div className="p-message-wrapper">
-          <span className="detail">{`₹${item.total}`}</span>
+          <span className="detail">{`₹${((price / 100) * 82).toFixed(
+            2
+          )}`}</span>
         </div>
         <div className="p-message-wrapper">
-          <span className="detail">{`₹${item.tax}`}</span>
+          <span className="detail">{`₹${((price / 100) * 18).toFixed(
+            2
+          )}`}</span>
         </div>
         <div className="p-message-wrapper">
-          <span className="detail">{`₹${item.grandTotal}`}</span>
+          <span className="detail">{`₹${price}`}</span>
         </div>
       </div>
     </div>
@@ -43,19 +50,35 @@ const footer = (item) => {
 export default function Cart() {
   const [cart, setCart] = useState(null);
   useEffect(() => {
-    const cartData = JSON.parse(localStorage.getItem("userData"));
+    const cartData = JSON.parse(localStorage.getItem("userCartData"));
     cartData && setCart(cartData);
   }, []);
 
   const itemTemplate = (item) => {
+    const handleRemoveCartItem = (itemId) => {
+      const newCartItems = cart.filter((el) => el.cartId != itemId);
+      setCart(newCartItems);
+      localStorage.setItem("userCartData", JSON.stringify(newCartItems));
+    };
     return (
       <>
-        <div className="d-flex flex-wrap p-2 align-items-center justify-content-between shadow-3">
+        <div
+          className="d-flex flex-wrap p-2 align-items-center justify-content-between shadow-3"
+          style={{
+            position: "relative",
+            marginRight: "5px",
+            marginBottom: "10px",
+          }}
+        >
+          <i
+            className="pi pi-times remove-cart-item bg-danger text-white"
+            onClick={() => handleRemoveCartItem(item.cartId)}
+          ></i>
           <div className="d-flex flex-wrap align-items-center justify-content-start gap-3">
             <img
               className="shadow-5 flex-shrink-0 border-round"
-              src={`./img/${item.image}`}
-              alt={item.product}
+              src={`./img/${item.imageUrl}`}
+              alt={item.name}
               style={{ width: "80px", height: "53.33px", borderRadius: "5px" }}
             />
             <div className="flex-1 d-flex flex-column gap-2 xl:mr-8">
@@ -68,7 +91,7 @@ export default function Cart() {
                   lineHeight: "14px",
                 }}
               >
-                {item.product}
+                {item.name}
               </span>
               <span
                 className="fst-italic"
@@ -78,7 +101,7 @@ export default function Cart() {
                   lineHeight: "5px",
                 }}
               >
-                {`Price : ₹${item.price.toFixed(2)} X ${item.quantity}`}
+                {`Price : ₹${item.price.toFixed(2)} X ${item.qty}`}
               </span>
               <span
                 className="fst-italic"
@@ -88,7 +111,7 @@ export default function Cart() {
                   lineHeight: "13px",
                 }}
               >
-                {`Total : ₹${(item.price * item.quantity).toFixed(2)}`}
+                {`Total : ₹${(item.price * item.qty).toFixed(2)}`}
               </span>
             </div>
           </div>
@@ -98,7 +121,7 @@ export default function Cart() {
               style={{ width: "90px", alignItems: "center" }}
             >
               <i className="pi pi-minus fw-bold rounded border btn qty-icon"></i>
-              <InputNumber inputId="minmax" value={100} />
+              <InputNumber inputId="minmax" value={item.qty} />
               <i className="pi pi-plus fw-bold rounded border btn qty-icon"></i>
             </div>
             <span className="fst-italic total-price-card">
@@ -112,33 +135,56 @@ export default function Cart() {
   return (
     <>
       <Nav />
-      <div style={{ marginTop: "46px", paddingBottom: "60px" }}>
-        <div className="p-message p-component p-message-warn p-message-enter-done order-card">
-          <div className="p-message-wrapper">
-            <span className="summary">Total Selling:</span>
-            <span className="detail">₹10000</span>
+      {cart ? (
+        cart.length > 0 ? (
+          <div style={{ marginTop: "46px", paddingBottom: "60px" }}>
+            <div className="p-message p-component p-message-warn p-message-enter-done order-card">
+              <div className="p-message-wrapper">
+                <span className="summary">Total Selling:</span>
+                <span className="detail">₹10000</span>
+              </div>
+              <div className="p-message-wrapper">
+                <span className="summary">You Earn:</span>
+                <span className="detail">₹1000</span>
+              </div>
+            </div>
+            <div
+              className="card flex justify-content-center shadow-3"
+              style={{
+                marginTop: "5px",
+                marginBottom: "10px",
+                borderRadius: "2px",
+              }}
+            >
+              {cart != null && (
+                <Card footer={footer(cart)}>
+                  {cart.map((item) => itemTemplate(item))}
+                </Card>
+              )}
+            </div>
+            <BottomNav />
           </div>
-          <div className="p-message-wrapper">
-            <span className="summary">You Earn:</span>
-            <span className="detail">₹1000</span>
+        ) : (
+          <div className="empty-cart">
+            <img
+              alt="empty cart"
+              src="./img/empty-cart.png"
+              className="empty-cart-img"
+            />
+            <h3 className="empty-cart-heading">Your Cart is Empty</h3>
+            <p className="empty-cart-paragraph">Add something to make happy</p>
+            <NavLink
+              to="/inventory"
+              className="btn btn-danger btn-rounded mt-3"
+              style={{ width: "80%" }}
+            >
+              Continue Shopping
+            </NavLink>
           </div>
-        </div>
-        <div
-          className="card flex justify-content-center shadow-3"
-          style={{
-            marginTop: "5px",
-            marginBottom: "10px",
-            borderRadius: "2px",
-          }}
-        >
-          {cart != null && (
-            <Card footer={footer(cart.cart)}>
-              {cart.cart.items.map((item) => itemTemplate(item))}
-            </Card>
-          )}
-        </div>
-        <BottomNav />
-      </div>
+        )
+      ) : (
+        " "
+      )}
     </>
   );
 }

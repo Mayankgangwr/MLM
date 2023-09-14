@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { ProductService } from "./ProductService";
 import "./Orders.css";
 import Nav from "./nav";
 import BottomNav from "./bottomnav";
@@ -70,12 +69,10 @@ const footer = (item) => {
   );
 };
 export default function Orders() {
-  const [products, setProducts] = useState([]);
   const [order, setOrder] = useState(null);
   useEffect(() => {
     const orderData = JSON.parse(localStorage.getItem("userData"));
     orderData && setOrder(orderData);
-    ProductService.getProductsSmall().then((data) => setProducts(data));
   }, []);
 
   const itemTemplate = (item) => {

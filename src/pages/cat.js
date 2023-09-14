@@ -47,7 +47,7 @@ const Cat = ({ slider }) => {
                   }}
                 >
                   <div className="circle">
-                    <img src={`./img/${el.img}`} alt="Circular Image" />
+                    <img src={`./img/${el.imageUrl}`} alt="Circular Image" />
                   </div>
                   <span>{el.name}</span>
                 </div>

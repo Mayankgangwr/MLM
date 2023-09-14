@@ -44,7 +44,6 @@ const Nav = () => {
   useEffect(() => {
     let userData = null;
     userData = JSON.parse(localStorage.getItem("userData"));
-    console.log(localStorage.getItem("userData"));
     if (userData != null) {
       setUser(userData);
       setIslogged(true);
@@ -76,7 +75,7 @@ const Nav = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-light-green py-4 px-0 m-pading fixed-top">
         <div className="container-fluid p-0">
-          <Link className="navbar-brand mt-lg-2 d-mobile logo-6 ps-1" href="/">
+          <Link className="navbar-brand mt-lg-2 d-mobile logo-6 ps-1" to="/">
             <img
               alt="logo"
               src="./img/logo.png"
@@ -103,18 +102,44 @@ const Nav = () => {
                     }}
                   >
                     {!user.user.image ? (
-                      <img
-                        alt="user-img"
-                        src="./img/b11.avif"
+                      isMenu ? (
+                        <span
+                          style={{
+                            fontSize: "22px",
+                            display: "flex",
+                          }}
+                          onClick={() => {
+                            setIsMenu(!isMenu);
+                          }}
+                        >
+                          <i className="pi pi-times"></i>
+                        </span>
+                      ) : (
+                        <img
+                          alt="user-img"
+                          src="./img/b11.avif"
+                          style={{
+                            width: "37px",
+                            height: "37px",
+                            borderRadius: "50%",
+                          }}
+                          onClick={() => {
+                            setIsMenu(!isMenu);
+                          }}
+                        />
+                      )
+                    ) : isMenu ? (
+                      <span
                         style={{
-                          width: "37px",
-                          height: "37px",
-                          borderRadius: "50%",
+                          fontSize: "22px",
+                          display: "flex",
                         }}
                         onClick={() => {
                           setIsMenu(!isMenu);
                         }}
-                      />
+                      >
+                        <i className="pi pi-times"></i>
+                      </span>
                     ) : (
                       <span
                         style={{
@@ -136,7 +161,7 @@ const Nav = () => {
                           left: "auto",
                           right: "2px",
                           minWidth: "100px",
-                          top: "35px",
+                          top: "41px",
                         }}
                       >
                         <li style={{ padding: "4px 0px" }}>
@@ -169,7 +194,7 @@ const Nav = () => {
                             <span>Cart</span>
                           </Link>
                         </li>
-                        <li style={{ padding: "4px 0px" }}>
+                        {/* <li style={{ padding: "4px 0px" }}>
                           <Link
                             activeClassName="active"
                             to="/income"
@@ -183,7 +208,7 @@ const Nav = () => {
                             <i class="fas fa-indian-rupee-sign"></i>
                             <span>Income</span>
                           </Link>
-                        </li>
+                        </li> */}
                         <li style={{ padding: "4px 0px" }}>
                           <div
                             className="btn p-1 mt-0 pe-0 d-flex justify-content-start text-capitalize align-items-center"
@@ -195,6 +220,7 @@ const Nav = () => {
                               textAlign: "center",
                               boxShadow: "none",
                             }}
+                            onClick={handleLogout}
                           >
                             <i class="fas fa-arrow-right-from-bracket"></i>
                             <span>Logout</span>

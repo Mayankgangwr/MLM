@@ -1,0 +1,27 @@
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.empty-cart-img {
+  width: 100%;
+  height: 275px;
+}
+.empty-cart-heading {
+  font-size: 25px;
+  line-height: 25px;
+  margin: 13px 0px 0px 0px;
+  padding: 0;
+  color: #000000b3;
+  font-weight: 600;
+}
+.empty-cart-paragraph {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  line-height: 16px;
+  max-width: 80%;
+  margin: 0.75rem auto 0 auto;
+}

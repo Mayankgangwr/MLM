@@ -56,7 +56,7 @@ const Banner = ({ slider }) => {
                   <div className="col-lg-5 col-md-6 col-sm-6 col-12">
                     <div className="card banner-card mt-3 mx-1 mb-4 m-lg-5 m-md-5">
                       <img
-                        src={`./img/${el.img}`}
+                        src={`./img/${el.imageUrl}`}
                         style={{
                           borderRadius: "15px",
                         }}
@@ -70,9 +70,6 @@ const Banner = ({ slider }) => {
                     >
                       {el.name}
                     </h1>
-                    <p className="bold ms-5 mt-4" style={{ color: "#000" }}>
-                      {el.starcast}
-                    </p>
                     <hr className="mx-5 mt-4" />
                     <div className="d-flex justify-content-center mt-4 mb-5">
                       <Link
@@ -118,7 +115,7 @@ const Banner = ({ slider }) => {
                 // </div>
                 <Link to={`/`}>
                   <img
-                    src={`./img/${el.img}`}
+                    src={`./img/${el.imageUrl}`}
                     className="slider-img"
                     style={{ width: "99%", marginTop: "2px" }}
                   />

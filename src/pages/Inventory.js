@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./nav";
 import BottomNav from "./bottomnav";
 import "./home.css";
@@ -6,6 +6,8 @@ import "./inventory.css";
 import { Link } from "react-router-dom";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import Apicalls from "../DataProvider/Apicalls";
+import { v4 as uuid } from "uuid";
 const header = (
   <img
     alt="Card"
@@ -23,50 +25,23 @@ const footer = (
   </div>
 );
 const Inventory = () => {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      img: "b1.webp",
-      name: "Amritam",
-    },
-    {
-      id: 2,
-      img: "b2.webp",
-      name: "Aura",
-    },
-    {
-      id: 3,
-      img: "b3.webp",
-      name: "Balsahali",
-    },
-    {
-      id: 4,
-      img: "b4.avif",
-      name: "Brinjal",
-    },
-    {
-      id: 5,
-      img: "b11.avif",
-      name: "Brutal",
-    },
-    {
-      id: 6,
-      img: "b22.avif",
-      name: "DAP",
-    },
-    {
-      id: 7,
-      img: "b33.avif",
-      name: "Fresh",
-    },
-    {
-      id: 8,
-      img: "b44.avif",
-      name: "Tomatoes",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
   const [show, setShow] = useState(false);
   const [sort, setSort] = useState(false);
+
+  const handleGetProducts = (e) => {
+    Apicalls.handleGetProducts()
+      .then((response) => {
+        setProducts(response.data);
+        console.log("Product Add successfully", response.data);
+      })
+      .catch((error) => {
+        console.error("Product Add failed", error);
+      });
+  };
+  useEffect(() => {
+    handleGetProducts();
+  }, [1]);
   const filterPro = (inp) => {
     const val = inp.target.value;
     products.filter((pro) => pro.name.indexOf(val));
@@ -153,7 +128,7 @@ const Inventory = () => {
                 <div key={el.id} className="pcard">
                   <Link to={`/`}>
                     <img
-                      src={`./img/${el.img}`}
+                      src={`./img/${el.imageUrl}`}
                       className="pro-img"
                       style={{ width: "92.5%" }}
                     />
@@ -175,9 +150,22 @@ const Inventory = () => {
                         lineHeight: "10px",
                       }}
                     ></i>
-                    <span>123</span>
+                    <div className="d-flex" style={{ gap: "3px" }}>
+                      <span className="pro-price">{el.price}</span>
+                      <span className="pro-mrp">{el.mrp}</span>
+                    </div>
                   </div>
                 </div>
+                <i
+                  className="pi pi-cart-plus"
+                  onClick={() =>
+                    Apicalls.handleAddCartItem({
+                      ...el,
+                      cartId: uuid(),
+                      qty: 1,
+                    })
+                  }
+                ></i>
               </div>
             ))}
         </div>

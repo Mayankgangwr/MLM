@@ -102,3 +102,12 @@
   font-size: 11px !important;
   font-weight: 400 !important;
 }
+
+.remove-cart-item {
+  position: absolute;
+  right: -6px;
+  bottom: -8px;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 4px;
+}

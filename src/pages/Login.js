@@ -17,8 +17,10 @@ const Login = () => {
 
   const handleLogin = () => {
     debugger;
+    const apiUrl = process.env.REACT_APP_API_BASE_URL;
+
     axios
-      .post("http://localhost:3000/api/users/login", {
+      .post(`${process.env.REACT_APP_API_BASE_URL}/users/login`, {
         email: email,
         password: password,
       })
