@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./pro_details.css";
+import Apicalls from "../DataProvider/Apicalls";
 const ProDetails = () => {
   const history = useNavigate();
   return (
@@ -11,7 +12,10 @@ const ProDetails = () => {
             className="pi pi-arrow-left prod-header-arrow-icon"
             onClick={() => history(-1)}
           ></i>
-          <i className="fas fa-shopping-cart prod-header-cart-icon">
+          <i
+            className="fas fa-shopping-cart prod-header-cart-icon"
+            onClick={() => history("/cart")}
+          >
             <span>10000</span>
           </i>
         </div>
@@ -33,10 +37,19 @@ const ProDetails = () => {
               ₹900<span>₹1000</span>
             </div>
 
-            <NavLink className="btn btn-dark prod-add-cart">
+            <div
+              className="btn btn-dark prod-add-cart"
+              //   onClick={() =>
+              //     Apicalls.handleAddCartItem({
+              //       ...el,
+              //       cartId: uuid(),
+              //       qty: 1,
+              //     })
+              //   }
+            >
               <i class="fas fa-cart-plus " style={{ paddingRight: "4px" }}></i>
               Add to Cart
-            </NavLink>
+            </div>
           </div>
         </div>
       </div>
