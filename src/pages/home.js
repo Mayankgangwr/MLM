@@ -5,9 +5,11 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import Banner from "./banner";
 import Apicalls from "../DataProvider/Apicalls";
+
 //import { useDispatch, useSelector } from "react-redux";
 import Cat from "./cat";
 const arr = [1, 2, 3, 4, 5];
+
 const Home = () => {
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
@@ -27,12 +29,12 @@ const Home = () => {
     handleGetProducts();
     const user = JSON.parse(localStorage.getItem("userData"));
     user && setUser(user);
-  }, [1]);
+  }, []);
   return (
     <>
-      <Nav />
+      <Nav key={1} />
       <div className="main px-0">
-        <Banner slider={products} />
+        <Banner key={2} slider={products} />
         <p className="text-uppercase fs-6 p-1 pb-0 mt-1 mb-0 fst-italic fw-bold">
           Shop by Categories
         </p>
@@ -45,7 +47,7 @@ const Home = () => {
             products.map((el) => (
               <div className="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 p-0 mt-5">
                 <div key={el.id} className="pcard">
-                  <Link to={`/`}>
+                  <Link to={`/pro_detail`}>
                     <img
                       src={`./img/${el.imageUrl}`}
                       className="pro-img"

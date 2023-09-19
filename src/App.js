@@ -10,6 +10,8 @@ import ImageUpload from "./ImageUpload";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import AddProductForm from "./pages/Addproducts";
+import CartUI from "./ui/cartui";
+import ProDetails from "./pages/pro_details";
 export default function App() {
   return (
     <BrowserRouter>
@@ -17,7 +19,7 @@ export default function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/team" element={<Teams />} exact />
           <Route path="/orders" element={<Orders />} exact />
-          <Route path="/cart" element={<Cart />} exact />
+          <Route path="/cart" element={<CartUI />} exact />
           <Route path="/income" element={<Home />} exact />
           <Route path="/profile" element={<Profile />} exact />
           <Route path="/addpro" element={<AddProductForm />} exact />
@@ -25,7 +27,9 @@ export default function App() {
         <Route path="/fileupload" element={<ImageUpload />} exact />
         <Route index element={<Home />} exact />
         <Route path="/inventory" element={<Inventory />} exact />
+        <Route path="pro_detail" element={<ProDetails />} exact />
         <Route path="/login" element={<Login />} />
+        <Route path="/cartui" element={<CartUI />} />
       </Routes>
     </BrowserRouter>
   );

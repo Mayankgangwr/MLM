@@ -48,7 +48,7 @@ const Nav = () => {
       setUser(userData);
       setIslogged(true);
     }
-  });
+  }, []);
   const NameAvtar = () => {
     const nameArr = user.user.name.split(" ");
     return (

@@ -21,7 +21,7 @@ const Login = () => {
       .then((response) => {
         localStorage.setItem("userData", JSON.stringify(response.data));
         window.location.replace("/");
-        //        navigate("/");
+        //         navigate("/");
       })
       .catch((error) => {
         console.error("Login failed", error);

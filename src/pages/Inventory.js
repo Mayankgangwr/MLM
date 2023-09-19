@@ -40,7 +40,7 @@ const Inventory = () => {
   };
   useEffect(() => {
     handleGetProducts();
-  }, [1]);
+  }, []);
   const filterPro = (inp) => {
     const val = inp.target.value;
     products.filter((pro) => pro.name.indexOf(val));
@@ -125,7 +125,7 @@ const Inventory = () => {
             products.map((el) => (
               <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-4 p-0 mt-5">
                 <div key={el.id} className="pcard">
-                  <Link to={`/`}>
+                  <Link to={`/pro_detail`}>
                     <img
                       src={`./img/${el.imageUrl}`}
                       className="pro-img"
